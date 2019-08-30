@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for i in `seq 1 254`
+do
+  condition=`ping -c 1 -W 2 192.168.1.$i | grep "bytes from"`
+  if [[ -z $condition ]]
+  then
+    echo "192.168.1.$i is down"
+  else
+    echo "192.168.1.$i is up"
+  fi
+done
